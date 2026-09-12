@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Sparkles, MessageSquare } from 'lucide-react';
+import { Menu, X, MessageSquare } from 'lucide-react';
 
 interface HeaderProps {
   onNavigateToSection: (sectionId: string) => void;
@@ -97,18 +97,6 @@ export default function Header({ onNavigateToSection, activeSection }: HeaderPro
 
           {/* Actions Block */}
           <div className="flex items-center gap-3" id="header-actions">
-            {/* WhatsApp Direct Header Button */}
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 rounded-full bg-[#25D366] text-white hover:bg-[#20bd5a] transition-all duration-300 shadow-xs flex items-center gap-2 text-xs font-bold tracking-wider cursor-pointer"
-              id="header-whatsapp-btn"
-            >
-              <MessageSquare className="w-4 h-4 fill-current" />
-              <span className="hidden sm:inline">WHATSAPP</span>
-            </a>
-
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsOpen(!isOpen)}

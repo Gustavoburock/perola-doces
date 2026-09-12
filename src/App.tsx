@@ -107,14 +107,14 @@ export default function App() {
       {/* 5. Persistent Floating Elements */}
       
       {/* WhatsApp Quick Button with clean outer speech bubble tag */}
-      <div className="fixed bottom-6 right-6 z-30 flex items-center gap-3">
-        {/* Subtle Outer Speech Bubble */}
-        <div className="hidden sm:flex items-center bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-2xl border border-beige-300 shadow-[0_4px_16px_rgba(74,41,40,0.08)] animate-fade-in relative">
-          <span className="text-xs font-sans font-bold text-cocoa-900 tracking-tight whitespace-nowrap">
+      <div className="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-30 flex items-center gap-2.5 sm:gap-3">
+        {/* Subtle Outer Speech Bubble - Visible on ALL screens (including small mobile) */}
+        <div className="flex items-center bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-2xl border border-beige-300 shadow-[0_4px_16px_rgba(74,41,40,0.1)] animate-fade-in relative">
+          <span className="text-[11px] sm:text-xs font-sans font-bold text-cocoa-900 tracking-tight whitespace-nowrap">
             Precisa de ajuda?
           </span>
           {/* Small pointer tail pointing towards the button */}
-          <div className="absolute -right-1.5 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rotate-45 border-t border-r border-beige-300" />
+          <div className="absolute -right-1.5 top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-white rotate-45 border-t border-r border-beige-300" />
         </div>
 
         {/* Clean Circular WhatsApp Action Icon */}
@@ -122,7 +122,7 @@ export default function App() {
           href={WHATSAPP_HELP_URL}
           target="_blank"
           rel="noreferrer"
-          className="w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] hover:scale-108 active:scale-95 text-white shadow-[0_8px_25px_rgba(37,211,102,0.4)] flex items-center justify-center transition-all duration-300 group cursor-pointer relative"
+          className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] hover:scale-108 active:scale-95 text-white shadow-[0_8px_25px_rgba(37,211,102,0.4)] flex items-center justify-center transition-all duration-300 group cursor-pointer relative shrink-0"
           aria-label="Precisa de ajuda? Fale pelo WhatsApp"
           id="floating-whatsapp"
         >
@@ -131,7 +131,7 @@ export default function App() {
           
           {/* Official WhatsApp Vector Logo */}
           <svg
-            className="w-7 h-7 fill-current relative z-10 transition-transform duration-300 group-hover:rotate-6"
+            className="w-6 h-6 sm:w-7 sm:h-7 fill-current relative z-10 transition-transform duration-300 group-hover:rotate-6"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
