@@ -107,10 +107,12 @@ export default function Hero({ onCtaClick, onExploreClick }: HeroProps) {
               </div>
 
               {/* Floating micro accent badge */}
-              <div className="absolute bottom-6 -left-6 bg-cream-50/95 backdrop-blur-sm border border-beige-300 py-3 px-4 rounded-2xl shadow-[0_8px_30px_rgba(74,41,40,0.08)] flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center text-rose-500 text-sm">
-                  ✨
-                </div>
+              <div className="absolute bottom-6 -left-6 bg-cream-50/95 backdrop-blur-sm border border-beige-300 py-2.5 px-3.5 rounded-2xl shadow-[0_8px_30px_rgba(74,41,40,0.12)] flex items-center gap-3">
+                <img
+                  src="/logo.png"
+                  alt="Pérola Doces"
+                  className="w-9 h-9 rounded-full object-cover border border-rose-300 shadow-xs"
+                />
                 <div>
                   <p className="text-[10px] text-cocoa-700 leading-none">Feito com Amor</p>
                   <p className="font-display font-bold text-cocoa-900 text-sm">Pérola Doces</p>

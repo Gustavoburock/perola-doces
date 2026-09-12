@@ -24,6 +24,22 @@ export default function Header({ onNavigateToSection, activeSection }: HeaderPro
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    };
+  }, [isOpen]);
+
   const menuItems = [
     { label: 'Início', id: 'inicio' },
     { label: 'Categorias', id: 'categorias' },
@@ -43,8 +59,8 @@ export default function Header({ onNavigateToSection, activeSection }: HeaderPro
     <header
       id="main-header"
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-cream-50/95 backdrop-blur-md shadow-[0_4px_20px_rgba(74,41,40,0.06)] py-3 border-b border-beige-300'
+        isOpen || isScrolled
+          ? 'bg-cream-50 shadow-[0_4px_20px_rgba(74,41,40,0.06)] py-3 border-b border-beige-300'
           : 'bg-transparent py-5'
       }`}
     >
@@ -113,16 +129,19 @@ export default function Header({ onNavigateToSection, activeSection }: HeaderPro
 
       {/* Mobile Drawer Navigation */}
       {isOpen && (
-        <div className="md:hidden fixed inset-0 top-[65px] bg-cream-50/98 backdrop-blur-lg z-30 flex flex-col justify-between py-8 px-6 border-t border-beige-300 shadow-xl transition-all duration-300" id="mobile-drawer">
-          <div className="flex flex-col gap-6">
+        <div
+          className="md:hidden fixed inset-x-0 bottom-0 top-[60px] bg-cream-50 z-50 flex flex-col justify-between py-6 px-6 border-t border-beige-300 shadow-2xl overflow-y-auto"
+          id="mobile-drawer"
+        >
+          <div className="flex flex-col gap-4">
             {menuItems.map((item) => {
               const isActive = activeSection === item.id;
               return (
                 <button
                   key={item.id}
                   onClick={() => handleItemClick(item.id)}
-                  className={`text-xl font-display font-medium text-left py-2 border-b border-beige-300/50 flex items-center justify-between cursor-pointer ${
-                    isActive ? 'text-rose-500' : 'text-cocoa-900'
+                  className={`text-lg font-display font-medium text-left py-2.5 border-b border-beige-300/60 flex items-center justify-between cursor-pointer active:text-rose-500 ${
+                    isActive ? 'text-rose-500 font-bold' : 'text-cocoa-900'
                   }`}
                 >
                   <span>{item.label}</span>
@@ -132,7 +151,7 @@ export default function Header({ onNavigateToSection, activeSection }: HeaderPro
             })}
           </div>
 
-          <div className="bg-cream-100 p-5 rounded-2xl border border-beige-300 flex flex-col gap-3">
+          <div className="bg-cream-100 p-5 rounded-2xl border border-beige-300 flex flex-col gap-3 mt-6">
             <div className="flex items-center gap-3">
               <img src="/logo.png" alt="Pérola Doces" className="w-10 h-10 rounded-full border border-rose-300 shadow-xs" />
               <div>

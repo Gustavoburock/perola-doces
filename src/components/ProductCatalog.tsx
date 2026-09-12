@@ -145,7 +145,7 @@ export default function ProductCatalog({ onSelectProduct }: ProductCatalogProps)
               
               // Get an iconic image for category card
               let catImage = '';
-              if (cat.key === 'bolos_festa') catImage = 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop&q=80';
+              if (cat.key === 'bolos_festa') catImage = '/products/bolo-morango.png';
               if (cat.key === 'ovos_colher') catImage = 'https://images.unsplash.com/photo-1541783245831-57d6fb0926d3?w=500&auto=format&fit=crop&q=80';
               if (cat.key === 'copo_felicidade') catImage = 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=500&auto=format&fit=crop&q=80';
               if (cat.key === 'outras_sobremesas') catImage = 'https://images.unsplash.com/photo-1541795795328-f073b763494e?w=500&auto=format&fit=crop&q=80';
