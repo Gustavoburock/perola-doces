@@ -174,6 +174,11 @@ export default function CartDrawer({
                         <img
                           src={item.product.image}
                           alt={item.product.name}
+                          onError={(e) => {
+                            if (item.product.fallbackImage && e.currentTarget.src !== item.product.fallbackImage) {
+                              e.currentTarget.src = item.product.fallbackImage;
+                            }
+                          }}
                           className="w-16 h-16 rounded-xl object-cover border border-beige-300"
                         />
                         <div className="flex-1 flex flex-col justify-between">

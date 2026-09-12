@@ -85,33 +85,44 @@ export default function OccasionsSection({ onSelectProduct }: OccasionsSectionPr
               </h4>
 
               {/* Grid of Recommended Products */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {recommendedProducts.map((p) => {
-                  const displayPrice = p.sizes && p.sizes.length > 0 ? p.sizes[0].price : p.price;
-                  return (
-                    <div
-                      key={p.id}
-                      onClick={() => onSelectProduct(p)}
-                      className="group p-4 rounded-2xl border border-beige-300 hover:border-rose-300 hover:bg-cream-100/40 bg-white transition-all duration-300 cursor-pointer flex items-center gap-3 shadow-2xs"
-                    >
-                      <img
-                        src={p.image}
-                        alt={p.name}
-                        className="w-12 h-12 rounded-xl object-cover border border-beige-300"
-                      />
-                      <div className="flex-1 min-w-0">
-                        <h5 className="text-xs font-bold text-cocoa-900 truncate group-hover:text-rose-500 transition-colors">
-                          {p.name}
-                        </h5>
-                        <p className="text-[10px] text-cocoa-700 mt-0.5">
-                          A partir de <span className="font-semibold text-cocoa-900">R$ {displayPrice.toFixed(2)}</span>
-                        </p>
+              {recommendedProducts.length > 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {recommendedProducts.map((p) => {
+                    const displayPrice = p.sizes && p.sizes.length > 0 ? p.sizes[0].price : p.price;
+                    return (
+                      <div
+                        key={p.id}
+                        onClick={() => onSelectProduct(p)}
+                        className="group p-4 rounded-2xl border border-beige-300 hover:border-rose-300 hover:bg-cream-100/40 bg-white transition-all duration-300 cursor-pointer flex items-center gap-3 shadow-2xs"
+                      >
+                        <img
+                          src={p.image}
+                          alt={p.name}
+                          onError={(e) => {
+                            if (p.fallbackImage && e.currentTarget.src !== p.fallbackImage) {
+                              e.currentTarget.src = p.fallbackImage;
+                            }
+                          }}
+                          className="w-12 h-12 rounded-xl object-cover border border-beige-300"
+                        />
+                        <div className="flex-1 min-w-0">
+                          <h5 className="text-xs font-bold text-cocoa-900 truncate group-hover:text-rose-500 transition-colors">
+                            {p.name}
+                          </h5>
+                          <p className="text-[10px] text-cocoa-700 mt-0.5">
+                            A partir de <span className="font-semibold text-cocoa-900">R$ {displayPrice.toFixed(2)}</span>
+                          </p>
+                        </div>
+                        <ChevronRight className="w-4 h-4 text-cocoa-700 group-hover:translate-x-1 transition-transform" />
                       </div>
-                      <ChevronRight className="w-4 h-4 text-cocoa-700 group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  );
-                })}
-              </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <p className="text-xs text-cocoa-700/80 italic py-2">
+                  Pronto para cadastrar os doces ideais para esta ocasião.
+                </p>
+              )}
 
             </div>
 

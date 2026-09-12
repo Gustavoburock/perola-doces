@@ -4,14 +4,17 @@ export interface SizeOption {
   price: number; // Final price for this size option
 }
 
+export type ProductCategory = 'bolos_festa' | 'ovos_colher' | 'copo_felicidade' | 'outras_sobremesas';
+
 export interface Product {
   id: string;
   name: string;
   description: string;
-  category: 'bolos_festa' | 'docinhos' | 'bolos_personalizados' | 'combos';
+  category: ProductCategory;
   price: number; // Base price for default size
   priceUnit: string; // e.g., "kg", "50 unid.", "combo"
   image: string;
+  fallbackImage?: string;
   sizes?: SizeOption[];
   customizable?: boolean;
   featured?: boolean;

@@ -98,21 +98,22 @@ export default function Hero({ onCtaClick, onExploreClick }: HeroProps) {
               {/* Image Container with shadow and rounded corners */}
               <div className="w-full h-full rounded-[24px] overflow-hidden shadow-[0_12px_40px_rgba(74,41,40,0.12)] border-4 border-cream-50 bg-cream-100">
                 <img
-                  src="/assets/bolo_morango.png"
-                  alt="Bolo artesanal decorado com morangos frescos"
+                  id="hero-chef-image"
+                  src="/confeiteira.jpg"
+                  alt="Confeiteira Pérola com bolo decorado artesanal - Pérola Doces"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
               </div>
 
               {/* Floating micro accent badge */}
-              <div className="absolute bottom-6 -left-6 bg-cream-50 border border-beige-300 py-3 px-4 rounded-2xl shadow-[0_8px_30px_rgba(74,41,40,0.08)] flex items-center gap-3 animate-bounce">
+              <div className="absolute bottom-6 -left-6 bg-cream-50/95 backdrop-blur-sm border border-beige-300 py-3 px-4 rounded-2xl shadow-[0_8px_30px_rgba(74,41,40,0.08)] flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center text-rose-500 text-sm">
                   ✨
                 </div>
                 <div>
-                  <p className="text-[10px] text-cocoa-700 leading-none">Queridinho da casa</p>
-                  <p className="font-display font-bold text-cocoa-900 text-sm">Pistache & Framboesa</p>
+                  <p className="text-[10px] text-cocoa-700 leading-none">Feito com Amor</p>
+                  <p className="font-display font-bold text-cocoa-900 text-sm">Pérola Doces</p>
                 </div>
               </div>
 

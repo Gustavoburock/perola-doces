@@ -7,10 +7,15 @@ export default function InstagramGrid() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center mb-16">
-          <span className="text-xs font-sans font-bold uppercase tracking-widest text-gold-500 mb-2.5 block flex items-center justify-center gap-1.5">
-            <Instagram className="w-4 h-4 text-rose-500" />
-            <span>@peroladoces</span>
-          </span>
+          <a
+            href="https://www.instagram.com/perola__doces/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs font-sans font-bold uppercase tracking-widest text-gold-500 hover:text-rose-500 transition-colors mb-2.5 group"
+          >
+            <Instagram className="w-4 h-4 text-rose-500 group-hover:scale-110 transition-transform" />
+            <span>@perola__doces</span>
+          </a>
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-cocoa-900 mb-4">
             Um pouquinho da Pérola todos os dias.
           </h2>
@@ -24,9 +29,9 @@ export default function InstagramGrid() {
           {INSTAGRAM_POSTS.map((post) => (
             <a
               key={post.id}
-              href="https://instagram.com"
+              href="https://www.instagram.com/perola__doces/"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="group relative aspect-square rounded-2xl overflow-hidden border border-beige-300 shadow-2xs block cursor-pointer"
             >
               <img
@@ -62,13 +67,13 @@ export default function InstagramGrid() {
         {/* Subtle follow call-to-action */}
         <div className="text-center mt-10">
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/perola__doces/"
             target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 text-xs font-bold text-rose-500 hover:text-rose-700 uppercase tracking-widest cursor-pointer"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-xs font-bold text-rose-500 hover:text-rose-700 uppercase tracking-widest cursor-pointer group"
           >
-            <span>Seguir no Instagram</span>
-            <span>→</span>
+            <span>Seguir no Instagram (@perola__doces)</span>
+            <span className="group-hover:translate-x-1 transition-transform">→</span>
           </a>
         </div>
 

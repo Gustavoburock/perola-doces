@@ -1,4 +1,4 @@
-import { Heart, Sparkles, MessageSquare } from 'lucide-react';
+import { Heart, Sparkles, MessageSquare, Instagram } from 'lucide-react';
 
 interface FooterProps {
   onCtaClick: () => void;
@@ -99,6 +99,15 @@ export default function Footer({ onCtaClick, onNavigateToSection }: FooterProps)
               <span className="font-bold text-cocoa-900">(11) 99864-0394</span>
               <span>Rua Soledade, 33</span>
               <span>Jardim da Luz — SP</span>
+              <a
+                href="https://www.instagram.com/perola__doces/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-rose-500 hover:text-rose-600 font-medium transition-colors pt-1"
+              >
+                <Instagram className="w-3.5 h-3.5" />
+                <span>@perola__doces</span>
+              </a>
             </div>
           </div>
 

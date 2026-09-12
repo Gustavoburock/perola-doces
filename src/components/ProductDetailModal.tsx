@@ -65,6 +65,11 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
             src={product.image}
             alt={product.name}
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              if (product.fallbackImage && e.currentTarget.src !== product.fallbackImage) {
+                e.currentTarget.src = product.fallbackImage;
+              }
+            }}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-cocoa-900/60 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-cream-50/10 pointer-events-none" />
@@ -88,9 +93,9 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
             {/* Category Breadcrumb */}
             <span className="text-[11px] font-sans font-bold uppercase tracking-widest text-gold-500 mb-1 block">
               {product.category === 'bolos_festa' && 'Bolo de Festa'}
-              {product.category === 'docinhos' && 'Docinho Fino'}
-              {product.category === 'bolos_personalizados' && 'Bolo Personalizado'}
-              {product.category === 'combos' && 'Combo Especial'}
+              {product.category === 'ovos_colher' && 'Ovo de Colher'}
+              {product.category === 'copo_felicidade' && 'Copo da Felicidade'}
+              {product.category === 'outras_sobremesas' && 'Outras Sobremesas'}
             </span>
 
             {/* Title */}
