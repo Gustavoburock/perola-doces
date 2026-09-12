@@ -164,7 +164,7 @@ export const OCCASIONS: Occasion[] = [
     description: 'De pequenas comemorações a festas grandiosas, encontre o bolo perfeito para apagar as velinhas.',
     tagline: 'Celebre a vida com o sabor que faz história.',
     recommendedProductIds: ['bolo-para-festa-morango', 'bolo-para-festa-lacos-vintage', 'bolo-para-festa-azul', 'bolo-para-festa-perolas-azuis'],
-    image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&auto=format&fit=crop&q=80'
+    image: '/products/bolo-morango.png'
   },
   {
     id: 'casamentos',
@@ -172,7 +172,7 @@ export const OCCASIONS: Occasion[] = [
     description: 'Doces finos e bolos decorados majestosos pensados para o dia mais especial de sua vida.',
     tagline: 'O amor é doce, seu casamento também deve ser.',
     recommendedProductIds: ['bolo-para-festa-lambeth-classico', 'bolo-para-festa-perolas-azuis', 'bolo-para-festa-lacos-vintage'],
-    image: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&auto=format&fit=crop&q=80'
+    image: '/products/bolo-redondo.png'
   },
   {
     id: 'cha-bebe',
@@ -180,7 +180,7 @@ export const OCCASIONS: Occasion[] = [
     description: 'Delicadeza em tons pastéis e temas lúdicos para celebrar a chegada e crescimento do seu tesouro.',
     tagline: 'Adoçando a doce espera e os primeiros meses de vida.',
     recommendedProductIds: ['bolo-para-festa-tesouro-casinha', 'bolo-para-festa-espiral-rosa', 'bolo-para-festa-perolas-azuis'],
-    image: 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=800&auto=format&fit=crop&q=80'
+    image: '/products/bolo-tesouro.png'
   },
   {
     id: 'comemoracoes',
@@ -188,7 +188,7 @@ export const OCCASIONS: Occasion[] = [
     description: 'Bolos personalizados com os times do coração e temas especiais para torcer e comemorar.',
     tagline: 'Gols de sabor para a sua festa temática.',
     recommendedProductIds: ['bolo-para-festa-brasil', 'bolo-para-festa-corinthians', 'bolo-para-festa-sao-paulo', 'bolo-para-festa-fusca'],
-    image: 'https://images.unsplash.com/photo-1531058020387-3be344559be6?w=800&auto=format&fit=crop&q=80'
+    image: '/products/bolo-brasil.png'
   }
 ];
 
@@ -257,25 +257,25 @@ export const BASTIDORES_STEPS = [
   {
     id: 1,
     title: 'Seleção de Ingredientes',
-    description: 'Usamos manteiga francesa, cacau belga 100%, creme de leite fresco e frutas higienizadas uma a uma. O sabor excepcional começa na escolha rigorosa.',
-    image: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&auto=format&fit=crop&q=80'
+    description: 'Usamos manteiga nobre, chocolates puros, creme de leite fresco e frutas higienizadas uma a uma. O sabor excepcional começa na escolha rigorosa.',
+    image: '/confeiteira.jpg'
   },
   {
     id: 2,
     title: 'Preparo Artesanal',
-    description: 'Nossas caldas e geleias são feitas do zero em pequenos lotes. As massas são batidas manualmente para garantir a aeração ideal e leveza absoluta.',
-    image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&auto=format&fit=crop&q=80'
+    description: 'Nossas massas fofinhas e recheios aveludados são preparados artesanalmente em pequenas fornadas para garantir aeração perfeita e frescor absoluto.',
+    image: '/products/bolo-morango.png'
   },
   {
     id: 3,
     title: 'Decoração e Acabamento',
-    description: 'Cada flor é higienizada e aplicada à mão. Cada pérola de açúcar é encaixada delicadamente. Cada folha de ouro é colocada com precisão de joalheiro.',
-    image: 'https://images.unsplash.com/photo-1535141192574-5d4897c13636?w=800&auto=format&fit=crop&q=80'
+    description: 'Cada roseta de chantininho é esculpida com precisão de confeiteira. Pérolas comestíveis, bicos minuciosos e fitas são aplicados com carinho.',
+    image: '/products/bolo-fita.png'
   },
   {
     id: 4,
     title: 'Embalagem & Entrega',
-    description: 'Nossos doces e bolos são colocados em caixas rígidas e reforçadas, projetadas para transporte seguro, finalizadas com nossas fitas elegantes.',
-    image: 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?w=800&auto=format&fit=crop&q=80'
+    description: 'Nossos bolos e doces são acondicionados com segurança para transporte perfeito, garantindo que sua festa receba uma verdadeira obra de arte intacta.',
+    image: '/products/bolo-perolas-azul.jpg'
   }
 ];
