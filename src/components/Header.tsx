@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
-import { ShoppingBag, Menu, X, Gift, Sparkles, Heart } from 'lucide-react';
-import { CartItem } from '../types';
+import { Menu, X, Sparkles, MessageSquare } from 'lucide-react';
 
 interface HeaderProps {
-  cart: CartItem[];
-  onOpenCart: () => void;
   onNavigateToSection: (sectionId: string) => void;
   activeSection: string;
 }
 
-export default function Header({ cart, onOpenCart, onNavigateToSection, activeSection }: HeaderProps) {
+const WHATSAPP_URL = 'https://wa.me/5511998640394?text=Ol%C3%A1%2C%20P%C3%A9rola%20Doces!%20Vim%20pelo%20site%20e%20queria%20tirar%20umas%20d%C3%BAvidas%20sobre%20os%20bolos%20e%20encomendas.';
+
+export default function Header({ onNavigateToSection, activeSection }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -24,8 +23,6 @@ export default function Header({ cart, onOpenCart, onNavigateToSection, activeSe
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   const menuItems = [
     { label: 'Início', id: 'inicio' },
@@ -57,19 +54,22 @@ export default function Header({ cart, onOpenCart, onNavigateToSection, activeSe
           {/* Logo Brand */}
           <button
             onClick={() => handleItemClick('inicio')}
-            className="flex items-center gap-2 group text-left cursor-pointer focus:outline-none"
+            className="flex items-center gap-3 group text-left cursor-pointer focus:outline-none"
             id="logo-button"
           >
-            <div className="relative w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center border border-rose-300 transition-transform duration-300 group-hover:scale-105">
-              <span className="text-rose-500 font-display text-xl font-bold">P</span>
-              <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-gold-500 border border-white animate-pulse" />
+            <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-rose-300 shadow-sm transition-transform duration-300 group-hover:scale-105 bg-rose-100 flex-shrink-0">
+              <img
+                src="/logo.png"
+                alt="Pérola Doces Logo"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div>
-              <h1 className="font-display text-xl font-bold tracking-wide text-cocoa-900 leading-none">
+              <h1 className="font-display text-xl sm:text-2xl font-bold tracking-wide text-cocoa-900 leading-none">
                 Pérola Doces
               </h1>
-              <p className="text-[10px] tracking-widest text-gold-500 font-medium uppercase mt-0.5">
-                Confeitaria Fina
+              <p className="text-[10px] tracking-widest text-gold-500 font-bold uppercase mt-1">
+                Confeitaria e Bolos
               </p>
             </div>
           </button>
@@ -96,21 +96,18 @@ export default function Header({ cart, onOpenCart, onNavigateToSection, activeSe
           </nav>
 
           {/* Actions Block */}
-          <div className="flex items-center gap-4" id="header-actions">
-            {/* Elegant Cart Trigger */}
-            <button
-              onClick={onOpenCart}
-              className="relative p-2.5 rounded-full bg-cream-100 border border-beige-300 text-cocoa-900 hover:text-rose-500 hover:border-rose-300 transition-all duration-300 group cursor-pointer focus:outline-none"
-              id="cart-trigger"
-              aria-label="Ver sacola de compras"
+          <div className="flex items-center gap-3" id="header-actions">
+            {/* WhatsApp Direct Header Button */}
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 rounded-full bg-[#25D366] text-white hover:bg-[#20bd5a] transition-all duration-300 shadow-xs flex items-center gap-2 text-xs font-bold tracking-wider cursor-pointer"
+              id="header-whatsapp-btn"
             >
-              <ShoppingBag className="w-5 h-5 transition-transform duration-300 group-hover:scale-105" />
-              {totalItems > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 bg-rose-500 text-white font-sans text-xs font-bold min-w-[20px] h-5 px-1.5 rounded-full flex items-center justify-center border-2 border-cream-50 animate-bounce">
-                  {totalItems}
-                </span>
-              )}
-            </button>
+              <MessageSquare className="w-4 h-4 fill-current" />
+              <span className="hidden sm:inline">WHATSAPP</span>
+            </a>
 
             {/* Mobile Menu Toggle */}
             <button
@@ -148,19 +145,25 @@ export default function Header({ cart, onOpenCart, onNavigateToSection, activeSe
           </div>
 
           <div className="bg-cream-100 p-5 rounded-2xl border border-beige-300 flex flex-col gap-3">
-            <div className="flex items-center gap-2 text-rose-500 font-medium text-sm">
-              <Sparkles className="w-4 h-4 text-gold-500" />
-              <span>Sabor que transforma momentos</span>
+            <div className="flex items-center gap-3">
+              <img src="/logo.png" alt="Pérola Doces" className="w-10 h-10 rounded-full border border-rose-300 shadow-xs" />
+              <div>
+                <span className="font-display font-bold text-cocoa-900 block leading-tight">Pérola Doces</span>
+                <span className="text-[10px] text-rose-500 font-bold uppercase">Feito com amor</span>
+              </div>
             </div>
             <p className="text-xs text-cocoa-700 leading-relaxed">
-              Agende seus bolos e doces pelo nosso WhatsApp com entrega rápida e segura em São Paulo.
+              Tire suas dúvidas ou faça seu pedido diretamente pelo nosso WhatsApp.
             </p>
-            <button
-              onClick={() => handleItemClick('cardapio')}
-              className="mt-2 w-full bg-rose-500 text-white py-3 rounded-full text-sm font-bold tracking-wider hover:bg-rose-500/90 active:scale-[0.98] transition-all duration-200 shadow-sm"
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 w-full bg-[#25D366] text-white py-3 rounded-full text-sm font-bold tracking-wider hover:bg-[#20bd5a] text-center flex items-center justify-center gap-2 transition-all duration-200 shadow-sm"
             >
-              VER NOSSO CARDÁPIO
-            </button>
+              <MessageSquare className="w-4 h-4 fill-current" />
+              <span>FALEM CONOSCO NO WHATSAPP</span>
+            </a>
           </div>
         </div>
       )}

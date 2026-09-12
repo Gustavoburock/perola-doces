@@ -36,10 +36,11 @@ export default function Footer({ onCtaClick, onNavigateToSection }: FooterProps)
           {/* Primary Action Button (Verb CTA) */}
           <button
             onClick={onCtaClick}
-            className="px-10 py-4.5 bg-rose-500 text-white rounded-full font-bold tracking-widest text-sm hover:bg-rose-500/90 hover:scale-103 active:scale-97 transition-all duration-300 shadow-[0_8px_30px_rgba(201,130,135,0.25)] cursor-pointer"
+            className="px-10 py-4.5 bg-rose-500 hover:bg-rose-500/90 text-white rounded-full font-bold tracking-widest text-sm hover:scale-103 active:scale-97 transition-all duration-300 shadow-[0_8px_30px_rgba(201,130,135,0.25)] cursor-pointer flex items-center justify-center gap-2 mx-auto"
             id="footer-primary-cta"
           >
-            FAZER MEU PEDIDO
+            <MessageSquare className="w-5 h-5 fill-current" />
+            <span>FAZER MEU PEDIDO</span>
           </button>
 
         </div>
@@ -51,17 +52,22 @@ export default function Footer({ onCtaClick, onNavigateToSection }: FooterProps)
           
           {/* Brand Column (takes 4 cols) */}
           <div className="md:col-span-4 text-left flex flex-col items-start gap-3">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center border border-rose-300 text-rose-500 font-display font-bold">
-                P
+            <div className="flex items-center gap-3">
+              <img
+                src="/logo.png"
+                alt="Pérola Doces Logo"
+                className="w-12 h-12 rounded-full border-2 border-rose-300 shadow-sm object-cover"
+              />
+              <div>
+                <h3 className="font-display text-xl font-bold text-cocoa-900 leading-none">Pérola Doces</h3>
+                <span className="text-[10px] text-gold-500 font-bold uppercase tracking-wider">Confeitaria e Bolos</span>
               </div>
-              <h3 className="font-display text-lg font-bold text-cocoa-900">Pérola Doces</h3>
             </div>
-            <p className="text-xs text-cocoa-700 leading-relaxed font-sans">
-              Confeitaria artesanal sofisticada baseada em São Paulo, transformando ingredientes nobres em comemorações inesquecíveis.
+            <p className="text-xs text-cocoa-700 leading-relaxed font-sans mt-1">
+              Confeitaria artesanal sofisticada baseada em São Paulo, transformando ingredientes nobres em momentos inesquecíveis feitos com amor.
             </p>
-            <p className="text-[10px] text-gold-500 font-bold uppercase tracking-widest mt-1">
-              "Qualidade e sabor que encantam"
+            <p className="text-[10px] text-rose-500 font-bold uppercase tracking-widest mt-0.5">
+              "Feito com Amor • Qualidade e sabor que encantam"
             </p>
           </div>
 

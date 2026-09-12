@@ -1,18 +1,16 @@
 import { useState, useEffect } from 'react';
-import { X, Plus, Minus, ShoppingBag, Sparkles } from 'lucide-react';
+import { X, MessageSquare, Send } from 'lucide-react';
 import { Product, SizeOption } from '../types';
 
 interface ProductDetailModalProps {
   product: Product | null;
   onClose: () => void;
-  onAddToCart: (product: Product, quantity: number, selectedSize: SizeOption | null, customText?: string) => void;
 }
 
-export default function ProductDetailModal({ product, onClose, onAddToCart }: ProductDetailModalProps) {
+const WHATSAPP_PHONE = '5511998640394';
+
+export default function ProductDetailModal({ product, onClose }: ProductDetailModalProps) {
   const [selectedSize, setSelectedSize] = useState<SizeOption | null>(null);
-  const [quantity, setQuantity] = useState(1);
-  const [customText, setCustomText] = useState('');
-  const [isAdded, setIsAdded] = useState(false);
 
   useEffect(() => {
     if (product) {
@@ -21,9 +19,6 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
       } else {
         setSelectedSize(null);
       }
-      setQuantity(1);
-      setCustomText('');
-      setIsAdded(false);
     }
   }, [product]);
 
@@ -31,16 +26,20 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
 
   const currentPrice = selectedSize ? selectedSize.price : product.price;
 
-  const handleIncrement = () => setQuantity((prev) => prev + 1);
-  const handleDecrement = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+  const handleWhatsAppInquiry = () => {
+    let message = `Olá, Pérola Doces! Vim pelo site e gostaria de saber mais informações sobre o *${product.name}*`;
 
-  const handleAdd = () => {
-    onAddToCart(product, quantity, selectedSize, product.customizable ? customText : undefined);
-    setIsAdded(true);
-    setTimeout(() => {
-      setIsAdded(false);
-      onClose();
-    }, 1200);
+    if (selectedSize) {
+      message += ` (Opção/Tamanho: ${selectedSize.label} - R$ ${currentPrice.toFixed(2)})`;
+    } else {
+      message += ` (Valor: R$ ${currentPrice.toFixed(2)} / ${product.priceUnit})`;
+    }
+
+    message += `\n\nPoderia me passar mais detalhes sobre disponibilidade e prazos de encomenda?`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -60,7 +59,7 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
         </button>
 
         {/* Product Image Panel */}
-        <div className="w-full md:w-1/2 relative aspect-video md:aspect-auto min-h-[200px] md:min-h-full">
+        <div className="w-full md:w-1/2 relative aspect-video md:aspect-auto min-h-[220px] md:min-h-full">
           <img
             src={product.image}
             alt={product.name}
@@ -149,74 +148,21 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
                 </div>
               </div>
             )}
-
-            {/* Custom text for personalized cakes */}
-            {product.customizable && (
-              <div className="mb-6 animate-fade-in">
-                <label className="text-xs font-sans font-bold uppercase tracking-wider text-cocoa-900 flex items-center gap-1.5 mb-2">
-                  <Sparkles className="w-3.5 h-3.5 text-gold-500" />
-                  <span>Escreva a mensagem do bolo (opcional):</span>
-                </label>
-                <textarea
-                  value={customText}
-                  onChange={(e) => setCustomText(e.target.value)}
-                  placeholder="Ex: 'Parabéns Maria, 30 anos!' ou 'Ana & Pedro'"
-                  maxLength={60}
-                  className="w-full p-3 text-xs font-sans border border-beige-300 rounded-xl bg-white focus:outline-none focus:border-rose-500 text-cocoa-900 resize-none h-16"
-                />
-                <span className="text-[10px] text-cocoa-700 float-right">
-                  {60 - customText.length} caracteres restantes
-                </span>
-              </div>
-            )}
           </div>
 
-          {/* Quantity & Buy Footer */}
-          <div className="mt-8 pt-4 border-t border-beige-300/60">
-            <div className="flex items-center justify-between gap-4">
-              
-              {/* Quantity Counter (Touch target friendly >44px) */}
-              <div className="flex items-center border border-beige-300 rounded-full bg-cream-100 p-1">
-                <button
-                  onClick={handleDecrement}
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-cocoa-700 hover:bg-cream-50 hover:text-rose-500 transition-colors cursor-pointer focus:outline-none"
-                  aria-label="Diminuir quantidade"
-                >
-                  <Minus className="w-4 h-4" />
-                </button>
-                <span className="w-8 text-center text-sm font-bold text-cocoa-900 font-sans">
-                  {quantity}
-                </span>
-                <button
-                  onClick={handleIncrement}
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-cocoa-700 hover:bg-cream-50 hover:text-rose-500 transition-colors cursor-pointer focus:outline-none"
-                  aria-label="Aumentar quantidade"
-                >
-                  <Plus className="w-4 h-4" />
-                </button>
-              </div>
-
-              {/* Add to basket CTA button */}
-              <button
-                onClick={handleAdd}
-                disabled={isAdded}
-                className={`flex-1 py-3.5 px-6 rounded-full font-bold text-sm tracking-wider flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer ${
-                  isAdded
-                    ? 'bg-green-600 text-white'
-                    : 'bg-rose-500 text-white hover:bg-rose-500/90 active:scale-[0.98] shadow-sm'
-                }`}
-              >
-                {isAdded ? (
-                  <span>ADICIONADO! ✓</span>
-                ) : (
-                  <>
-                    <ShoppingBag className="w-4 h-4" />
-                    <span>ADICIONAR À SACOLA</span>
-                  </>
-                )}
-              </button>
-
-            </div>
+          {/* WhatsApp Direct Action Button */}
+          <div className="mt-6 pt-4 border-t border-beige-300/60">
+            <button
+              onClick={handleWhatsAppInquiry}
+              className="w-full py-4 px-6 rounded-full font-bold text-sm tracking-wider flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20bd5a] active:scale-[0.98] text-white shadow-md transition-all duration-200 cursor-pointer"
+            >
+              <MessageSquare className="w-5 h-5 fill-current" />
+              <span>CONSULTAR NO WHATSAPP</span>
+              <Send className="w-4 h-4 ml-1" />
+            </button>
+            <p className="text-[11px] text-center text-cocoa-700 mt-2 font-sans">
+              Você será direcionado para o WhatsApp para combinar todos os detalhes da encomenda.
+            </p>
           </div>
 
         </div>

@@ -198,7 +198,7 @@ export default function ProductCatalog({ onSelectProduct }: ProductCatalogProps)
               Qual vai ser a sua próxima tentação?
             </h2>
             <p className="font-sans text-sm sm:text-base text-cocoa-700 max-w-xl mx-auto leading-relaxed">
-              Explore nossa seleção exclusiva de bolos macios e docinhos sofisticados. Escolha e faça sua encomenda com poucos toques.
+              Explore nossa seleção exclusiva de bolos macios e docinhos sofisticados. Clique no modelo desejado para ver detalhes e tirar dúvidas pelo WhatsApp.
             </p>
           </div>
 
@@ -324,12 +324,12 @@ export default function ProductCatalog({ onSelectProduct }: ProductCatalogProps)
                           </div>
                         </div>
 
-                        {/* Button: "VER OPÇÕES" */}
+                        {/* Button: "SABER MAIS" */}
                         <button
                           onClick={() => onSelectProduct(product)}
                           className="px-5 py-2.5 bg-rose-500 text-white rounded-full text-xs font-bold tracking-wider hover:bg-rose-500/90 hover:scale-102 active:scale-98 transition-all duration-200 shadow-sm cursor-pointer"
                         >
-                          VER OPÇÕES
+                          SABER MAIS
                         </button>
                       </div>
 
@@ -416,7 +416,7 @@ export default function ProductCatalog({ onSelectProduct }: ProductCatalogProps)
                   onClick={() => onSelectProduct(heroProduct)}
                   className="px-8 py-4 bg-rose-500 text-white rounded-full font-bold tracking-wider text-sm hover:bg-rose-500/90 active:scale-98 shadow-md transition-all duration-300 cursor-pointer"
                 >
-                  CUSTOMIZAR MEU BOLO
+                  CONSULTAR ESTE MODELO
                 </button>
 
               </div>

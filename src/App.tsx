@@ -1,54 +1,26 @@
 import { useState, useEffect } from 'react';
-import { MessageSquare, ArrowUp } from 'lucide-react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import ProductCatalog from './components/ProductCatalog';
 import ProductDetailModal from './components/ProductDetailModal';
-import CartDrawer from './components/CartDrawer';
 import OccasionsSection from './components/OccasionsSection';
 import Bastidores from './components/Bastidores';
 import Testimonials from './components/Testimonials';
 import InstagramGrid from './components/InstagramGrid';
 import LocationBlock from './components/LocationBlock';
 import Footer from './components/Footer';
-import { Product, CartItem, SizeOption } from './types';
+import { Product } from './types';
+
+const WHATSAPP_ORDER_URL = 'https://wa.me/5511998640394?text=Ol%C3%A1%2C%20P%C3%A9rola%20Doces!%20Vim%20pelo%20site%20e%20gostaria%20de%20fazer%20um%20pedido.';
+const WHATSAPP_HELP_URL = 'https://wa.me/5511998640394?text=Ol%C3%A1%2C%20P%C3%A9rola%20Doces!%20Vim%20pelo%20site%20e%20queria%20tirar%20umas%20d%C3%BAvidas%20sobre%20os%20bolos%20e%20encomendas.';
 
 export default function App() {
-  const [cart, setCart] = useState<CartItem[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('inicio');
-  const [showScrollTop, setShowScrollTop] = useState(false);
 
-  // 1. Load cart from Local Storage on mount
-  useEffect(() => {
-    const savedCart = localStorage.getItem('perola_doces_cart');
-    if (savedCart) {
-      try {
-        setCart(JSON.parse(savedCart));
-      } catch (e) {
-        console.error('Erro ao carregar a sacola de compras:', e);
-      }
-    }
-  }, []);
-
-  // 2. Save cart to Local Storage on update
-  const saveCart = (newCart: CartItem[]) => {
-    setCart(newCart);
-    localStorage.setItem('perola_doces_cart', JSON.stringify(newCart));
-  };
-
-  // 3. Scroll top tracker and section highlighting
+  // Section highlighting on scroll
   useEffect(() => {
     const handleScroll = () => {
-      // Toggle scroll to top button
-      if (window.scrollY > 400) {
-        setShowScrollTop(true);
-      } else {
-        setShowScrollTop(false);
-      }
-
-      // Highlight active section
       const sections = ['inicio', 'categorias', 'cardapio', 'bastidores', 'ocasioes', 'depoimentos', 'contato'];
       const scrollPosition = window.scrollY + 120; // offset for sticky header
 
@@ -69,50 +41,7 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // 4. Cart actions
-  const handleAddToCart = (product: Product, quantity: number, selectedSize: SizeOption | null, customText?: string) => {
-    // Generate unique ID for cart line item to distinguish same product with different sizes or texts
-    const sizeHash = selectedSize ? selectedSize.sizeId : 'default';
-    const textHash = customText ? encodeURIComponent(customText) : 'none';
-    const lineId = `${product.id}-${sizeHash}-${textHash}`;
-
-    const existingIndex = cart.findIndex((item) => item.id === lineId);
-    let newCart = [...cart];
-
-    if (existingIndex > -1) {
-      newCart[existingIndex].quantity += quantity;
-    } else {
-      newCart.push({
-        id: lineId,
-        product,
-        quantity,
-        selectedSize,
-        customText,
-      });
-    }
-
-    saveCart(newCart);
-  };
-
-  const handleUpdateQuantity = (lineId: string, newQuantity: number) => {
-    if (newQuantity <= 0) {
-      handleRemoveItem(lineId);
-      return;
-    }
-    const newCart = cart.map((item) => (item.id === lineId ? { ...item, quantity: newQuantity } : item));
-    saveCart(newCart);
-  };
-
-  const handleRemoveItem = (lineId: string) => {
-    const newCart = cart.filter((item) => item.id !== lineId);
-    saveCart(newCart);
-  };
-
-  const handleClearCart = () => {
-    saveCart([]);
-  };
-
-  // 5. Navigation actions
+  // Navigation action
   const handleNavigateToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -121,16 +50,15 @@ export default function App() {
     }
   };
 
-  const handleOpenCart = () => setIsCartOpen(true);
-  const handleCloseCart = () => setIsCartOpen(false);
+  const handleOpenWhatsApp = () => {
+    window.open(WHATSAPP_ORDER_URL, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <div className="min-h-screen bg-cream-50 font-sans text-cocoa-900 selection:bg-rose-300 selection:text-cocoa-900 relative">
       
       {/* 1. Sticky Navigation Header */}
       <Header
-        cart={cart}
-        onOpenCart={handleOpenCart}
         onNavigateToSection={handleNavigateToSection}
         activeSection={activeSection}
       />
@@ -140,7 +68,7 @@ export default function App() {
         
         {/* Section 01: Hero Header */}
         <Hero
-          onCtaClick={handleOpenCart}
+          onCtaClick={handleOpenWhatsApp}
           onExploreClick={() => handleNavigateToSection('cardapio')}
         />
 
@@ -166,54 +94,51 @@ export default function App() {
 
       {/* 3. Footer with Section 10 */}
       <Footer
-        onCtaClick={handleOpenCart}
+        onCtaClick={handleOpenWhatsApp}
         onNavigateToSection={handleNavigateToSection}
       />
 
-      {/* 4. Overlay Modals and Drawers */}
+      {/* 4. Overlay Modal for Product WhatsApp Inquiry */}
       <ProductDetailModal
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}
-        onAddToCart={handleAddToCart}
-      />
-
-      <CartDrawer
-        isOpen={isCartOpen}
-        onClose={handleCloseCart}
-        cart={cart}
-        onUpdateQuantity={handleUpdateQuantity}
-        onRemoveItem={handleRemoveItem}
-        onClearCart={handleClearCart}
       />
 
       {/* 5. Persistent Floating Elements */}
       
-      {/* WhatsApp Quick Button */}
-      <a
-        href="https://wa.me/5511998640394?text=Olá,%20Pérola%20Doces!%20Gostaria%20de%20tirar%20algumas%20dúvidas%20sobre%20encomendas."
-        target="_blank"
-        rel="noreferrer"
-        className="fixed bottom-6 right-6 z-30 p-4 bg-rose-500 hover:bg-rose-500/90 hover:scale-105 active:scale-95 text-white rounded-full shadow-[0_8px_30px_rgba(201,130,135,0.4)] transition-all duration-300 group flex items-center gap-2 cursor-pointer"
-        aria-label="Falar pelo WhatsApp"
-        id="floating-whatsapp"
-      >
-        <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 ease-in-out text-xs font-bold tracking-wider uppercase">
-          Falar pelo WhatsApp
-        </span>
-        <MessageSquare className="w-5 h-5 fill-current text-white" />
-      </a>
+      {/* WhatsApp Quick Button with clean outer speech bubble tag */}
+      <div className="fixed bottom-6 right-6 z-30 flex items-center gap-3">
+        {/* Subtle Outer Speech Bubble */}
+        <div className="hidden sm:flex items-center bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-2xl border border-beige-300 shadow-[0_4px_16px_rgba(74,41,40,0.08)] animate-fade-in relative">
+          <span className="text-xs font-sans font-bold text-cocoa-900 tracking-tight whitespace-nowrap">
+            Precisa de ajuda?
+          </span>
+          {/* Small pointer tail pointing towards the button */}
+          <div className="absolute -right-1.5 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rotate-45 border-t border-r border-beige-300" />
+        </div>
 
-      {/* Scroll Top Button */}
-      {showScrollTop && (
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-6 left-6 z-30 p-3 bg-cream-100 border border-beige-300 text-cocoa-900 rounded-full shadow-md hover:text-rose-500 hover:border-rose-300 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
-          aria-label="Ir para o topo"
-          id="scroll-to-top"
+        {/* Clean Circular WhatsApp Action Icon */}
+        <a
+          href={WHATSAPP_HELP_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] hover:scale-108 active:scale-95 text-white shadow-[0_8px_25px_rgba(37,211,102,0.4)] flex items-center justify-center transition-all duration-300 group cursor-pointer relative"
+          aria-label="Precisa de ajuda? Fale pelo WhatsApp"
+          id="floating-whatsapp"
         >
-          <ArrowUp className="w-4 h-4" />
-        </button>
-      )}
+          {/* Ping pulse ring */}
+          <span className="absolute -inset-1 rounded-full bg-[#25D366]/30 animate-ping pointer-events-none opacity-60" />
+          
+          {/* Official WhatsApp Vector Logo */}
+          <svg
+            className="w-7 h-7 fill-current relative z-10 transition-transform duration-300 group-hover:rotate-6"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.186 8.186 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.71 4.3 3.8.6.26 1.07.41 1.44.53.6.19 1.15.16 1.59.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.18-.48-.3z"/>
+          </svg>
+        </a>
+      </div>
 
     </div>
   );

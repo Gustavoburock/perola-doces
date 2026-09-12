@@ -44,7 +44,7 @@ export default function Hero({ onCtaClick, onExploreClick }: HeroProps) {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto" id="hero-cta-group">
               <button
                 onClick={onCtaClick}
-                className="px-8 py-4 bg-rose-500 text-white rounded-full font-bold tracking-wider text-sm hover:bg-rose-500/90 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 shadow-[0_8px_30px_rgba(201,130,135,0.2)] cursor-pointer flex items-center justify-center gap-2 group"
+                className="px-8 py-4 bg-rose-500 hover:bg-rose-500/90 text-white rounded-full font-bold tracking-wider text-sm hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 shadow-[0_8px_30px_rgba(201,130,135,0.25)] cursor-pointer flex items-center justify-center gap-2 group"
                 id="hero-primary-cta"
               >
                 <span>FAZER MEU PEDIDO</span>
