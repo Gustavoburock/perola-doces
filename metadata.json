@@ -1,0 +1,6 @@
+{
+  "name": "Pérola Doces",
+  "description": "Confeitaria artesanal, delicada, sofisticada e acolhedora. Qualidade e sabor que encantam.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
