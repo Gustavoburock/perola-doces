@@ -6,7 +6,7 @@ interface HeaderProps {
   activeSection: string;
 }
 
-const WHATSAPP_URL = 'https://wa.me/5511998640394?text=Ol%C3%A1%2C%20P%C3%A9rola%20Doces!%20Vim%20pelo%20site%20e%20queria%20tirar%20umas%20d%C3%BAvidas%20sobre%20os%20bolos%20e%20encomendas.';
+const WHATSAPP_URL = `https://wa.me/5511998640394?text=${encodeURIComponent('Olá, Pérola Doces! Vim pelo site e queria tirar algumas dúvidas sobre os bolos e encomendas.')}`;
 
 export default function Header({ onNavigateToSection, activeSection }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
