@@ -2,7 +2,7 @@ import { MapPin, Phone, Clock, MessageSquare, Navigation } from 'lucide-react';
 
 export default function LocationBlock() {
   const officialPhone = '5511998640394';
-  const whatsappUrl = `https://wa.me/${officialPhone}?text=${encodeURIComponent('Olá, Pérola Doces! Vim pelo site e gostaria de tirar algumas dúvidas sobre encomendas e retirada.')}`;
+  const whatsappUrl = `https://wa.me/${officialPhone}?text=${encodeURIComponent('Olá, Pérola Doces! 🍰\n\nVim pelo site e gostaria de tirar dúvidas sobre *encomendas, horários ou retirada* no local.\n\n📍 Poderiam me atender? 💕')}`;
   
   // Real location query for Google Maps embed and directions
   const addressQuery = encodeURIComponent('Rua Soledade, 33, Jardim da Luz, São Paulo - SP');

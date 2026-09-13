@@ -11,8 +11,8 @@ import LocationBlock from './components/LocationBlock';
 import Footer from './components/Footer';
 import { Product } from './types';
 
-const WHATSAPP_ORDER_URL = `https://wa.me/5511998640394?text=${encodeURIComponent('Olá, Pérola Doces! Vim pelo site e gostaria de fazer um pedido.')}`;
-const WHATSAPP_HELP_URL = `https://wa.me/5511998640394?text=${encodeURIComponent('Olá, Pérola Doces! Vim pelo site e queria tirar algumas dúvidas sobre os bolos e encomendas.')}`;
+const WHATSAPP_ORDER_URL = `https://wa.me/5511998640394?text=${encodeURIComponent('Olá, Pérola Doces! 🍰\n\nVim pelo site e gostaria de fazer um *pedido de bolo ou doces*.\n\n✨ Poderiam me enviar informações e prazos de encomenda? 💕')}`;
+const WHATSAPP_HELP_URL = `https://wa.me/5511998640394?text=${encodeURIComponent('Olá, Pérola Doces! 🍰\n\nVim pelo site e gostaria de tirar algumas dúvidas sobre *bolos e encomendas*.\n\n💬 Poderiam me atender? 💕')}`;
 
 export default function App() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);

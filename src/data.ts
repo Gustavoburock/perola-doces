@@ -154,6 +154,72 @@ export const PRODUCTS: Product[] = [
     image: '/products/bolo-timao.png',
     featured: false,
     tags: ['Corinthians', 'Timão', 'Temático'],
+  },
+
+  // --- CATEGORIA: OVOS DE COLHER ---
+  {
+    id: 'ovo-colher-ninho-nutella',
+    name: 'Ovo de Colher Ninho com Nutella',
+    description: 'Casca de chocolate ao leite nobre, recheada com creme aveludado de Leite Ninho, generosa camada de Nutella pura e finalizada com brigadeiros artesanais.',
+    category: 'ovos_colher',
+    price: 75.00,
+    priceUnit: 'unid.',
+    image: '/products/ovo-ninho.png',
+    featured: true,
+    tags: ['Leite Ninho', 'Nutella', 'Mais Pedido', 'Artesanal'],
+    sizes: [
+      { sizeId: '250g', label: 'Pequeno (250g)', price: 60.00 },
+      { sizeId: '350g', label: 'Médio (350g)', price: 75.00 },
+      { sizeId: '500g', label: 'Grande (500g)', price: 98.00 }
+    ]
+  },
+  {
+    id: 'ovo-colher-ferrero-rocher',
+    name: 'Ovo de Colher Ferrero Rocher',
+    description: 'Casca crocante de chocolate meio amargo com castanhas, recheio cremoso de gianduia e Nutella, coroado com bombons Ferrero Rocher e avelãs tostadas.',
+    category: 'ovos_colher',
+    price: 85.00,
+    priceUnit: 'unid.',
+    image: '/products/ovo-ferreiro.png',
+    featured: true,
+    tags: ['Ferrero Rocher', 'Nutella', 'Avelã', 'Gourmet'],
+    sizes: [
+      { sizeId: '250g', label: 'Pequeno (250g)', price: 70.00 },
+      { sizeId: '350g', label: 'Médio (350g)', price: 85.00 },
+      { sizeId: '500g', label: 'Grande (500g)', price: 115.00 }
+    ]
+  },
+  {
+    id: 'ovo-colher-prestigio',
+    name: 'Ovo de Colher Prestígio Cremoso',
+    description: 'Casca de chocolate ao leite intensa, recheio generoso de beijinho artesanal de coco fresco úmido e cobertura de ganache de brigadeiro gourmet.',
+    category: 'ovos_colher',
+    price: 70.00,
+    priceUnit: 'unid.',
+    image: '/products/ovo-prestigio.png',
+    featured: false,
+    tags: ['Coco Fresco', 'Prestígio', 'Brigadeiro', 'Tradicional'],
+    sizes: [
+      { sizeId: '250g', label: 'Pequeno (250g)', price: 55.00 },
+      { sizeId: '350g', label: 'Médio (350g)', price: 70.00 },
+      { sizeId: '500g', label: 'Grande (500g)', price: 92.00 }
+    ]
+  },
+  {
+    id: 'ovo-colher-kitkat',
+    name: 'Ovo de Colher KitKat & Brigadeiro',
+    description: 'Casca ao leite recheada com brigadeiro cremoso gourmet 50% cacau, pedaços crocantes de KitKat e decoração com mini barrinhas crocantes de KitKat.',
+    category: 'ovos_colher',
+    price: 75.00,
+    priceUnit: 'unid.',
+    image: '/products/ovo-kitkat.png',
+    featured: true,
+    tags: ['KitKat', 'Brigadeiro 50%', 'Crocante', 'Sucesso'],
+    sizes: [
+      { sizeId: '250g', label: 'Pequeno (250g)', price: 60.00 },
+      { sizeId: '350g', label: 'Médio (350g)', price: 75.00 },
+      { sizeId: '500g', label: 'Grande (500g)', price: 98.00 }
+    ]
   }
 ];
 

@@ -8,7 +8,7 @@ interface FooterProps {
 export default function Footer({ onCtaClick, onNavigateToSection }: FooterProps) {
   const currentYear = new Date().getFullYear();
   const officialPhone = '5511998640394';
-  const whatsappUrl = `https://wa.me/${officialPhone}?text=${encodeURIComponent('Olá, Pérola Doces! Vim pelo site e gostaria de fazer um pedido.')}`;
+  const whatsappUrl = `https://wa.me/${officialPhone}?text=${encodeURIComponent('Olá, Pérola Doces! 🍰\n\nVim pelo site e gostaria de fazer um *pedido de bolo ou doces*.\n\n✨ Poderiam me ajudar a escolher os sabores e agendar a data? 💕')}`;
 
   return (
     <footer className="relative bg-cream-100 border-t border-beige-300 overflow-hidden" id="main-footer">
