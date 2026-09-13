@@ -226,38 +226,92 @@ export const INSTAGRAM_POSTS: InstagramPost[] = [
   {
     id: 'ig-1',
     imageUrl: '/products/bolo-morango.png',
-    likes: 1420,
-    title: 'Festival de Fatias',
-    caption: 'Festival de Fatias da Pérola Doces! Camadas generosas, massa fofinha e recheios irresistíveis que derretem na boca. Qual é o seu sabor favorito? 🍰✨',
+    likes: 1850,
+    title: 'Doces & Bolos Especiais',
+    caption: 'Confira nossos bolos artesanais preparados com ingredientes nobres para momentos inesquecíveis! 🍰✨',
     date: 'Destaque',
-    postUrl: 'https://www.instagram.com/p/DcWFn2nx-3B/'
+    postUrl: 'https://www.instagram.com/p/DWz5dMbCfpv/?img_index=1'
   },
   {
     id: 'ig-2',
-    imageUrl: 'https://images.unsplash.com/photo-1541795795328-f073b763494e?w=600&auto=format&fit=crop&q=80',
-    likes: 1890,
-    title: 'Copo da Felicidade',
-    caption: 'Pura tentação em cada colherada! Muito brigadeiro cremoso, brownie artesanal, morangos e aquele toque que só a Pérola tem. Corre pra garantir o seu! 🍓🍫❤️',
+    imageUrl: '/products/bolo-perolas-azul.jpg',
+    likes: 1620,
+    title: 'Bolos Personalizados',
+    caption: 'Cada detalhe pensado com muito carinho para deixar a sua comemoração ainda mais especial. ❤️🎂',
     date: 'Recente',
-    postUrl: 'https://www.instagram.com/p/DWby625ER9k/'
+    postUrl: 'https://www.instagram.com/p/DbJGfC9xSi4/'
   },
   {
     id: 'ig-3',
-    imageUrl: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&auto=format&fit=crop&q=80',
-    likes: 2150,
-    title: 'Ovo de Colher Artesanal',
-    caption: 'Nosso famoso Ovo de Colher recheado até a borda! Casca de chocolate nobre e recheio cremoso para transformar qualquer dia em uma comemoração inesquecível. 🍫🥄✨',
-    date: 'Mais Amado',
-    postUrl: 'https://www.instagram.com/p/DWr7i7UidnQ/'
+    imageUrl: '/products/bolo-espiral-rosa.png',
+    likes: 2100,
+    title: 'Festa & Comemoração',
+    caption: 'Massa fofinha e recheios aveludados que conquistam no primeiro pedaço. 🎉✨',
+    date: 'Em Alta',
+    postUrl: 'https://www.instagram.com/p/DaI2ZwCiTbd/?img_index=1'
   },
   {
     id: 'ig-4',
     imageUrl: '/products/bolo-flamingo.png',
-    likes: 1680,
-    title: 'Bolo Flamingo Tropical',
-    caption: 'Muito charme, cor e elegância com o nosso Bolo Flamingo! Trabalho artesanal em chantininho para deixar a sua festa inesquecível e cheia de personalidade. 🦩🌺💖',
-    date: 'Personalizado',
-    postUrl: 'https://www.instagram.com/p/DWkHGYxCUgU/?img_index=1'
+    likes: 1490,
+    title: 'Delícias Artesanais',
+    caption: 'O sabor inconfundível da Confeitaria Pérola Doces diretamente na sua mesa! 🦩🌺',
+    date: 'Especial',
+    postUrl: 'https://www.instagram.com/p/DaI2QPqpOVs/'
+  },
+  {
+    id: 'ig-5',
+    imageUrl: '/products/bolo-fita.png',
+    likes: 1980,
+    title: 'Sobremesas & Docinhos',
+    caption: 'Adoce o seu dia com os nossos docinhos finos e sobremesas deliciosas! 🍓🍫',
+    date: 'Mais Amado',
+    postUrl: 'https://www.instagram.com/p/DZhzJUdkZ0k/?img_index=1'
+  },
+  {
+    id: 'ig-6',
+    imageUrl: '/products/bolo-brasil.png',
+    likes: 1730,
+    title: 'Momentos Pérola',
+    caption: 'Transformando celebrações em memórias doces e inesquecíveis. ✨🎈',
+    date: 'Exclusivo',
+    postUrl: 'https://www.instagram.com/p/DZIViVQFJLZ/?img_index=1'
+  },
+  {
+    id: 'ig-7',
+    imageUrl: '/products/bolo-fusca.png',
+    likes: 1540,
+    title: 'Sabor & Carinho',
+    caption: 'Feito artesanalmente com ingredientes de altíssima qualidade! 🍰❤️',
+    date: 'Recente',
+    postUrl: 'https://www.instagram.com/p/DYN1wFpJPO5/'
+  },
+  {
+    id: 'ig-8',
+    imageUrl: '/products/bolo-quadrado.png',
+    likes: 2280,
+    title: 'Ateliê Pérola Doces',
+    caption: 'Encomende com antecedência e garanta o bolo perfeito para o seu evento! 💌✨',
+    date: 'Destaque',
+    postUrl: 'https://www.instagram.com/p/DYNzq7zpW1j/'
+  },
+  {
+    id: 'ig-9',
+    imageUrl: 'https://images.unsplash.com/photo-1541795795328-f073b763494e?w=600&auto=format&fit=crop&q=80',
+    likes: 1890,
+    title: 'Copo da Felicidade',
+    caption: 'Pura tentação em cada colherada! Muito brigadeiro cremoso, brownie artesanal e morangos. 🍓🍫❤️',
+    date: 'Recente',
+    postUrl: 'https://www.instagram.com/p/DWby625ER9k/'
+  },
+  {
+    id: 'ig-10',
+    imageUrl: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&auto=format&fit=crop&q=80',
+    likes: 2150,
+    title: 'Ovo de Colher Artesanal',
+    caption: 'Nosso famoso Ovo de Colher recheado até a borda! 🍫🥄✨',
+    date: 'Mais Amado',
+    postUrl: 'https://www.instagram.com/p/DWr7i7UidnQ/'
   }
 ];
 

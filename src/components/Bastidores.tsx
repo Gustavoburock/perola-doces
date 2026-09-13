@@ -96,8 +96,14 @@ export default function Bastidores() {
   // Update path length once SVG path D is calculated
   useEffect(() => {
     if (pathRef.current) {
-      const len = pathRef.current.getTotalLength();
-      setPathLength(len);
+      try {
+        const len = pathRef.current.getTotalLength();
+        if (Number.isFinite(len) && len > 0) {
+          setPathLength(len);
+        }
+      } catch {
+        // SVG element might not be rendered yet in DOM
+      }
     }
   }, [svgPathD]);
 
@@ -114,7 +120,10 @@ export default function Bastidores() {
       const totalDist = (rect.height + startTrigger) - endTrigger;
       const currentDist = startTrigger - rect.top;
 
-      let progress = Math.min(Math.max(currentDist / totalDist, 0), 1);
+      let progress = totalDist > 0 ? Math.min(Math.max(currentDist / totalDist, 0), 1) : 0;
+      if (!Number.isFinite(progress) || Number.isNaN(progress)) {
+        progress = 0;
+      }
       setScrollProgress(progress);
 
       // Determine active card based on center threshold
@@ -140,6 +149,11 @@ export default function Bastidores() {
       targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   };
+
+  // Safe numerical calculations to prevent NaN CSS style values
+  const safePathLength = Number.isFinite(pathLength) && pathLength > 0 ? pathLength : 2000;
+  const safeProgress = Number.isFinite(scrollProgress) ? Math.min(Math.max(scrollProgress, 0), 1) : 0;
+  const safeDashOffset = safePathLength * (1 - safeProgress);
 
   return (
     <section id="bastidores" className="py-24 sm:py-32 bg-cream-100 border-y border-beige-300 scroll-mt-16 relative overflow-hidden">
@@ -202,8 +216,8 @@ export default function Bastidores() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 style={{
-                  strokeDasharray: pathLength || 2000,
-                  strokeDashoffset: pathLength ? pathLength * (1 - scrollProgress) : 0,
+                  strokeDasharray: safePathLength,
+                  strokeDashoffset: safeDashOffset,
                   transition: 'stroke-dashoffset 0.15s ease-out'
                 }}
               />

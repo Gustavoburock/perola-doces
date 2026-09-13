@@ -8,7 +8,7 @@ interface FooterProps {
 export default function Footer({ onCtaClick, onNavigateToSection }: FooterProps) {
   const currentYear = new Date().getFullYear();
   const officialPhone = '5511998640394';
-  const whatsappUrl = `https://wa.me/${officialPhone}`;
+  const whatsappUrl = `https://wa.me/${officialPhone}?text=${encodeURIComponent('Olá, Pérola Doces! Vim pelo site e gostaria de fazer um pedido.')}`;
 
   return (
     <footer className="relative bg-cream-100 border-t border-beige-300 overflow-hidden" id="main-footer">
@@ -36,10 +36,16 @@ export default function Footer({ onCtaClick, onNavigateToSection }: FooterProps)
           {/* Primary Action Button (Verb CTA) */}
           <button
             onClick={onCtaClick}
-            className="px-10 py-4.5 bg-rose-500 hover:bg-rose-500/90 text-white rounded-full font-bold tracking-widest text-sm hover:scale-103 active:scale-97 transition-all duration-300 shadow-[0_8px_30px_rgba(201,130,135,0.25)] cursor-pointer flex items-center justify-center gap-2 mx-auto"
+            className="px-10 py-4.5 bg-rose-500 hover:bg-rose-500/90 text-white rounded-full font-bold tracking-widest text-sm hover:scale-103 active:scale-97 transition-all duration-300 shadow-[0_8px_30px_rgba(201,130,135,0.25)] cursor-pointer flex items-center justify-center gap-2.5 mx-auto group"
             id="footer-primary-cta"
           >
-            <MessageSquare className="w-5 h-5 fill-current" />
+            <svg
+              className="w-5 h-5 fill-current transition-transform duration-300 group-hover:rotate-6"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.186 8.186 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.71 4.3 3.8.6.26 1.07.41 1.44.53.6.19 1.15.16 1.59.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.18-.48-.3z"/>
+            </svg>
             <span>FAZER MEU PEDIDO</span>
           </button>
 

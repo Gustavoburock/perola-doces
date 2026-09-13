@@ -88,7 +88,7 @@ export default function OccasionsSection({ onSelectProduct }: OccasionsSectionPr
   };
 
   const whatsappOccasionUrl = `https://wa.me/5511998640394?text=${encodeURIComponent(
-    `Olá, Pérola Doces! Gostaria de fazer uma encomenda personalizada para ${activeOccasion.name}. Poderiam me enviar opções e orçamentos?`
+    `Olá, Pérola Doces! Vim pelo site e gostaria de fazer uma encomenda personalizada para ${activeOccasion.name}. Poderiam me enviar opções e orçamentos?`
   )}`;
 
   return (

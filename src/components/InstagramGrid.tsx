@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Instagram, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import { Instagram } from 'lucide-react';
 import { INSTAGRAM_POSTS } from '../data';
 
 declare global {
@@ -14,8 +14,6 @@ declare global {
 
 export default function InstagramGrid() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
 
   // Load and process Instagram Embeds
   useEffect(() => {
@@ -55,87 +53,35 @@ export default function InstagramGrid() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Update scroll navigation states
-  const checkScroll = () => {
-    if (scrollContainerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
-      setCanScrollLeft(scrollLeft > 10);
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
-    }
-  };
-
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (container) {
-      checkScroll();
-      container.addEventListener('scroll', checkScroll, { passive: true });
-      window.addEventListener('resize', checkScroll);
-      return () => {
-        container.removeEventListener('scroll', checkScroll);
-        window.removeEventListener('resize', checkScroll);
-      };
-    }
-  }, []);
-
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollContainerRef.current) {
-      const cardWidth = 340;
-      const scrollAmount = direction === 'left' ? -cardWidth : cardWidth;
-      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
-  };
-
   return (
     <section className="py-24 bg-cream-100 border-t border-beige-300 scroll-mt-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header with Carousel Navigation Buttons */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
-          <div className="text-left max-w-2xl">
-            <a
-              href="https://www.instagram.com/perola__doces/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-sans font-bold uppercase tracking-widest text-gold-500 hover:text-rose-500 transition-colors mb-2.5 group"
-            >
-              <Instagram className="w-4 h-4 text-rose-500 group-hover:scale-110 transition-transform" />
-              <span>@perola__doces</span>
-            </a>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-cocoa-900 mb-3">
-              Direto do nosso Instagram.
-            </h2>
-            <p className="font-sans text-sm sm:text-base text-cocoa-700 leading-relaxed">
-              Deslize para navegar pelas publicações, vídeos e bastidores reais da Pérola Doces!
-            </p>
-          </div>
-
-          {/* Carousel Arrows */}
-          <div className="flex items-center gap-2.5 self-start md:self-end shrink-0">
-            <button
-              onClick={() => scroll('left')}
-              disabled={!canScrollLeft}
-              aria-label="Voltar postagens"
-              className="w-11 h-11 rounded-full border border-beige-300 bg-white flex items-center justify-center text-cocoa-900 shadow-2xs hover:bg-cream-50 hover:border-rose-300 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer active:scale-95"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => scroll('right')}
-              disabled={!canScrollRight}
-              aria-label="Avançar postagens"
-              className="w-11 h-11 rounded-full border border-beige-300 bg-white flex items-center justify-center text-cocoa-900 shadow-2xs hover:bg-cream-50 hover:border-rose-300 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer active:scale-95"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
+        {/* Centered Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+          <a
+            href="https://www.instagram.com/perola__doces/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs font-sans font-bold uppercase tracking-widest text-gold-500 hover:text-rose-500 transition-colors mb-2.5 group"
+          >
+            <Instagram className="w-4 h-4 text-rose-500 group-hover:scale-110 transition-transform" />
+            <span>@perola__doces</span>
+          </a>
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-cocoa-900 mb-3">
+            Direto do nosso Instagram.
+          </h2>
+          <p className="font-sans text-sm sm:text-base text-cocoa-700 leading-relaxed">
+            Deslize para o lado para navegar pelas publicações, vídeos e bastidores reais da Pérola Doces!
+          </p>
         </div>
 
-        {/* Swipeable Instagram Carousel Container */}
+        {/* Swipeable / Scrollable Instagram Carousel Container */}
         <div className="relative -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
           <div
             ref={scrollContainerRef}
             id="instagram-grid"
-            className="flex gap-5 sm:gap-6 overflow-x-auto scrollbar-none pb-6 pt-2 snap-x snap-mandatory scroll-smooth"
+            className="flex gap-5 sm:gap-6 overflow-x-auto scrollbar-none pb-6 pt-2 snap-x snap-mandatory scroll-smooth cursor-grab active:cursor-grabbing"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
@@ -194,11 +140,14 @@ export default function InstagramGrid() {
             href="https://www.instagram.com/perola__doces/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-white border border-beige-300 hover:border-rose-400 text-xs font-bold text-cocoa-900 hover:text-rose-500 uppercase tracking-widest cursor-pointer shadow-2xs hover:shadow-xs transition-all duration-300 group"
+            className="relative inline-flex items-center justify-center gap-2.5 px-9 py-4 rounded-full bg-rose-500 hover:bg-rose-500/90 active:scale-98 text-white text-xs font-bold uppercase tracking-wider shadow-[0_8px_30px_rgba(201,130,135,0.35)] hover:shadow-[0_12px_35px_rgba(201,130,135,0.45)] hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer"
           >
-            <Instagram className="w-4 h-4 text-rose-500" />
-            <span>Seguir perfil no instagram</span>
-            <span className="group-hover:translate-x-1 transition-transform">→</span>
+            {/* Ping pulse ring matching the pulse effect from the floating action */}
+            <span className="absolute -inset-1 rounded-full bg-rose-500/30 animate-ping pointer-events-none opacity-60" />
+
+            <Instagram className="w-4 h-4 text-white relative z-10 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110" />
+            <span className="relative z-10">Seguir perfil no Instagram</span>
+            <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">→</span>
           </a>
         </div>
 
