@@ -225,31 +225,39 @@ export const TESTIMONIALS: Testimonial[] = [
 export const INSTAGRAM_POSTS: InstagramPost[] = [
   {
     id: 'ig-1',
-    imageUrl: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop&q=80',
-    likes: 1240,
-    caption: 'Bastidores da nossa cozinha: montando com amor cada camada do nosso campeão de pedidos, o Bolo de Pistache & Framboesa! 🌸🍰✨ #perola__doces #confeitariaartesanal #pistache',
-    date: 'Ontem'
+    imageUrl: '/products/bolo-morango.png',
+    likes: 1420,
+    title: 'Festival de Fatias',
+    caption: 'Festival de Fatias da Pérola Doces! Camadas generosas, massa fofinha e recheios irresistíveis que derretem na boca. Qual é o seu sabor favorito? 🍰✨',
+    date: 'Destaque',
+    postUrl: 'https://www.instagram.com/p/DcWFn2nx-3B/'
   },
   {
     id: 'ig-2',
-    imageUrl: 'https://images.unsplash.com/photo-1541795795328-f073b763494e?w=500&auto=format&fit=crop&q=80',
-    likes: 980,
-    caption: 'Bolinhas de felicidade pura! Nosso Brigadeiro Gourmet com chocolate belga Callebaut sendo boleado com todo carinho. Dá pra resistir? 🍫❤️ #brigadeiro #gourmet #callebaut',
-    date: 'Há 3 dias'
+    imageUrl: 'https://images.unsplash.com/photo-1541795795328-f073b763494e?w=600&auto=format&fit=crop&q=80',
+    likes: 1890,
+    title: 'Copo da Felicidade',
+    caption: 'Pura tentação em cada colherada! Muito brigadeiro cremoso, brownie artesanal, morangos e aquele toque que só a Pérola tem. Corre pra garantir o seu! 🍓🍫❤️',
+    date: 'Recente',
+    postUrl: 'https://www.instagram.com/p/DWby625ER9k/'
   },
   {
     id: 'ig-3',
-    imageUrl: 'https://images.unsplash.com/photo-1535254973040-607b474cb50d?w=500&auto=format&fit=crop&q=80',
-    likes: 1560,
-    caption: 'Pérolas, flores e toques dourados para celebrar um recomeço mágico. Muito amor envolvido nesse clássico de Buttercream! 💍✨ #weddingcake #buttercream #decoracaocomestivel',
-    date: 'Há 5 dias'
+    imageUrl: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&auto=format&fit=crop&q=80',
+    likes: 2150,
+    title: 'Ovo de Colher Artesanal',
+    caption: 'Nosso famoso Ovo de Colher recheado até a borda! Casca de chocolate nobre e recheio cremoso para transformar qualquer dia em uma comemoração inesquecível. 🍫🥄✨',
+    date: 'Mais Amado',
+    postUrl: 'https://www.instagram.com/p/DWr7i7UidnQ/'
   },
   {
     id: 'ig-4',
-    imageUrl: 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?w=500&auto=format&fit=crop&q=80',
-    likes: 810,
-    caption: 'Festa em casa? Nosso Combo Petit resolve! Praticidade sem abrir mão do sabor artesanal e da apresentação impecável que você merece. 🎈📦 #comboaniversario #festaemcasa',
-    date: 'Há 1 semana'
+    imageUrl: '/products/bolo-flamingo.png',
+    likes: 1680,
+    title: 'Bolo Flamingo Tropical',
+    caption: 'Muito charme, cor e elegância com o nosso Bolo Flamingo! Trabalho artesanal em chantininho para deixar a sua festa inesquecível e cheia de personalidade. 🦩🌺💖',
+    date: 'Personalizado',
+    postUrl: 'https://www.instagram.com/p/DWkHGYxCUgU/?img_index=1'
   }
 ];
 

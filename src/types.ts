@@ -54,4 +54,6 @@ export interface InstagramPost {
   likes: number;
   caption: string;
   date: string;
+  postUrl: string;
+  title?: string;
 }
